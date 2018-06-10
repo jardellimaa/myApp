@@ -14,41 +14,42 @@
 
 
 <ion-content padding>
-    <h1 class="feed_usuario">{{ nome_usuario }}</h1>
+  <h1 class="feed_usuario">{{ nome_usuario }}</h1>
   <ion-card>
     <ion-item>
       <ion-avatar item-start>
         <img src="assets/imgs/tayh.png">
       </ion-avatar>
-      <h2>Taynah Costa</h2>
-      <p>Junho 9, 2018</p>
+      <h2>{{objeto_feed.nome}}</h2>
+      <p>{{objeto_feed.data}}</p>
     </ion-item>
-  
+
     <img src="assets/imgs/tayh2.png">
-  
+
     <ion-card-content>
-      <p>Eu sou especial e incrível!</p>
+      <p>{{objeto_feed.descricao}}</p>
     </ion-card-content>
-  
+
     <ion-row>
       <ion-col>
         <button ion-button icon-left clear small>
           <ion-icon name="thumbs-up"></ion-icon>
-          <div>999 Curtidas</div>
+          <div>{{objeto_feed.qntd_likes}} Curtidas</div>
         </button>
       </ion-col>
       <ion-col>
         <button ion-button icon-left clear small>
           <ion-icon name="text"></ion-icon>
-          <div>200 Comments</div>
+          <div>{{objeto_feed.qntd_coments}} Comments</div>
         </button>
       </ion-col>
       <ion-col center text-center>
         <ion-note>
-          1h ago
+          {{objeto_feed.time_coment}}
         </ion-note>
       </ion-col>
     </ion-row>
-  
+
   </ion-card>
+
 </ion-content>

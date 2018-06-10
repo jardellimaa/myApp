@@ -15,9 +15,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FeedPage {
 
+  public objeto_feed = {
+     nome:"Taynah Costa",
+     data:"Junho 9, 2018",
+     descricao:"Eu sou especial e incrível!",
+     qntd_likes: 999,
+     qntd_coments: 200,
+     time_coment: "1h ago"
+  }
+
+  //public lista_produtos = new Array<any>();
+
   public nome_usuario:string = "Jardel Lima";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    //private produtosProvider: ProdutosProvider
+    ) {
   }
 
   public somaDoisNumeros(num1:number, num2:number):void {
@@ -25,7 +40,15 @@ export class FeedPage {
   }
 
   ionViewDidLoad() {
-    //this.somaDoisNumeros(10, 99);
+    /*this.produtosProvider.getProdutos().subscribe(
+      data=>{
+        console.log(data);
+        this.lista_produtos = data as any;
+      },
+      error=>{
+        console.log(error);
+      }
+    )*/
   }
 
 }
