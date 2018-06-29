@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { ProdutosProvider } from '../../providers/produtos/produtos';
+import { ProdutoDetalhesPage } from '../produto-detalhes/produto-detalhes';
 
 /**
  * Generated class for the ListaprodutosPage page.
@@ -16,22 +17,63 @@ import { ProdutosProvider } from '../../providers/produtos/produtos';
 })
 export class ListaprodutosPage {
 
+  public loader;
   public lista_produtos = new Array<any>();
+  public refresher;
+  public isRefreshing : boolean = false;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private produtosProvider: ProdutosProvider) {
+    private produtosProvider: ProdutosProvider,
+    public loadingCtrl: LoadingController) {
   }
 
-  ionViewDidLoad() {
+  abrirDetalhes(produto){
+    //console.log(produto);
+    this.navCtrl.push(ProdutoDetalhesPage, { produto: produto} );
+  }
+
+  doRefresh(refresher) {
+    this.refresher = refresher;
+    this.isRefreshing = true;
+    this.carregarProdutos();
+  }
+
+  abreCarregando() {
+    this.loader = this.loadingCtrl.create({
+      content: "Carregando...",
+    });
+    this.loader.present();
+  }
+
+  fechaCarregando(){
+    this.loader.dismiss();
+  }
+
+  ionViewDidEnter() {
+    this.carregarProdutos();
+  }
+
+  carregarProdutos(){
+    this.abreCarregando();
     this.produtosProvider.getProdutos().subscribe(
       data=>{
         //console.log(data);
         this.lista_produtos = data as any;
+        this.fechaCarregando();
+        if(this.isRefreshing){
+          this.refresher.complete();
+          this.isRefreshing = false;
+        }
       },
       error=>{
         //console.log(error);
+        this.fechaCarregando();
+        if(this.isRefreshing){
+          this.refresher.complete();
+          this.isRefreshing = false;
+        }
       }
     )
   }

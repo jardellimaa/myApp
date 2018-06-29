@@ -16,9 +16,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class FeedPage {
 
   public objeto_feed = {
-     nome:"Taynah Costa",
+     nome:"Jardel Lima",
      data:"Junho 9, 2018",
-     descricao:"Eu sou especial e incrível!",
+     descricao:"Sou Pika!",
      qntd_likes: 999,
      qntd_coments: 200,
      time_coment: "1h ago"

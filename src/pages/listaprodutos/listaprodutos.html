@@ -14,8 +14,12 @@
 
 
 <ion-content padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
     <ion-list no-lines>
-      <button ion-item *ngFor="let produto of lista_produtos">
+      <button ion-item *ngFor="let produto of lista_produtos" (click)="abrirDetalhes(produto)">
         {{ produto.nome }}
       </button>
     </ion-list>

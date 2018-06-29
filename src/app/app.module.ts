@@ -16,6 +16,10 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http'
 import { ProdutosProvider } from '../providers/produtos/produtos';
 import { ListaprodutosPageModule } from '../pages/listaprodutos/listaprodutos.module';
+import { ConfiguracoesPageModule } from '../pages/configuracoes/configuracoes.module';
+import { SobrePageModule } from '../pages/sobre/sobre.module';
+import { PerfilPageModule } from '../pages/perfil/perfil.module';
+import { ProdutoDetalhesPageModule } from '../pages/produto-detalhes/produto-detalhes.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,7 @@ import { ListaprodutosPageModule } from '../pages/listaprodutos/listaprodutos.mo
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,11 @@ import { ListaprodutosPageModule } from '../pages/listaprodutos/listaprodutos.mo
     IntroPageModule,
     ListaprodutosPageModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    ConfiguracoesPageModule,
+    SobrePageModule,
+    PerfilPageModule,
+    ProdutoDetalhesPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

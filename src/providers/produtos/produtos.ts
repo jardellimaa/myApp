@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ProdutosProvider {
 
-  url = "http://192.168.31.180:8080/produtos/";
+  url = "http://localhost:8080/produtos";
 
   constructor(public http: HttpClient) {
     console.log('Hello ProdutosProvider Provider');
