@@ -13,18 +13,30 @@
 <ion-content padding>
   <h1 style="text-align: center;">Insira os dados</h1>
 
-  <ion-list>
+  <form #form="ngForm" novalidate>
+    <ion-list>
       <ion-item>
-          <ion-input type="text" name="codigo" placeholder="Código" [(ngModel)]="model.codigo"></ion-input>
-        </ion-item>
-
-    <ion-item>
-      <ion-input type="text" name="nome" placeholder="Nome" [(ngModel)]="model.nome"></ion-input>
-    </ion-item>
-
-    <ion-item>
-        <ion-input type="text" name="codigoBarras" placeholder="Código de Barras" [(ngModel)]="model.codigoBarras"></ion-input>
+        <ion-input type="number" name="codigo" placeholder="Código" [(ngModel)]="model.codigo" #codigo="ngModel" min="1" required></ion-input>
       </ion-item>
-  </ion-list>
+      <ion-item *ngIf="codigo.errors && (codigo.dirty || codigo.touched)" class="text-danger">
+        O campo é obrigatório
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="text" name="nome" placeholder="Nome" [(ngModel)]="model.nome" #nome="ngModel" required></ion-input>
+      </ion-item>
+      <ion-item *ngIf="nome.errors && (nome.dirty || nome.touched)" class="text-danger">
+        O campo é obrigatório
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="text" name="codigoBarras" placeholder="Código de Barras" [(ngModel)]="model.codigoBarras" #codigoBarras="ngModel"
+          minlength="9" maxlength="9" required></ion-input>
+      </ion-item>
+      <ion-item *ngIf="codigoBarras.errors && (codigoBarras.dirty || codigoBarras.touched)" class="text-danger">
+        O campo é obrigatório
+      </ion-item>
+    </ion-list>
+  </form>
 
 </ion-content>

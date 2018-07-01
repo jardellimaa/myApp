@@ -25,6 +25,16 @@ export class ProdutoDetalhesPage {
     private toast: ToastController) {
   }
 
+  carregardoBanco(){
+    this.produtoProvider.getProduto(this.produto.codigo).subscribe(
+      data=>{
+        this.produto = data as any;
+      }, error =>{
+
+      }
+    )
+  }
+
   abrirEdicao(){
     this.navCtrl.push(EditarProdutoPage, { produto: this.produto });
     console.log(this.produto);
@@ -40,9 +50,9 @@ export class ProdutoDetalhesPage {
     this.navCtrl.pop();
   }
 
-  ionViewDidEnter() {
+  ionViewWillEnter() {
     this.produto = this.navParams.get("produto");
-    //console.log(this.produto);
+    this.carregardoBanco();
   }
 
 }

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { ProdutosProvider } from '../../providers/produtos/produtos';
+import { NgForm } from '@angular/forms';
 
 /**
  * Generated class for the EditarProdutoPage page.
@@ -17,25 +18,38 @@ import { ProdutosProvider } from '../../providers/produtos/produtos';
 export class EditarProdutoPage {
 
   produto: Produto;
+  @ViewChild('form') form: NgForm;
 
   constructor(public navCtrl: NavController,
-  public navParams: NavParams,
-  private produtosProvider: ProdutosProvider,
-  private toast: ToastController) {
-      this.produto = new Produto();
-      this.produto = this.navParams.get("produto");      
+    public navParams: NavParams,
+    private produtosProvider: ProdutosProvider,
+    private toast: ToastController) {
+    this.produto = new Produto();
+    this.produto = this.navParams.get("produto");
+    console.log(this.produto);
   }
 
-  editarProduto(){
-    console.log(this.produto);
-    this.produtosProvider.updateProduto(this.produto).subscribe(
-      data => {
-        this.toast.create({message: 'Produto ' +this.produto.nome +' criado com sucesso!', position: 'botton', duration: 3000}).present();
-      }, error => {
-        this.toast.create({message: 'Produto ' +this.produto.nome +' não foi criado!', position: 'botton', duration: 3000}).present();
-      }
-    )
-    this.navCtrl.pop();
+  ionViewDidLoad() {
+  }
+
+  ionViewDidEnter() {
+  }
+
+  ionViewWillUnload(){
+  }
+
+  editarProduto() {
+    if (this.form.form.valid) {
+      console.log(this.produto);
+      this.produtosProvider.updateProduto(this.produto).subscribe(
+        data => {
+          this.toast.create({ message: 'Produto ' + this.produto.nome + ' editado com sucesso!', position: 'botton', duration: 3000 }).present();
+        }, error => {
+          this.toast.create({ message: 'Produto ' + this.produto.nome + ' não foi editado!', position: 'botton', duration: 3000 }).present();
+        }
+      )
+      this.navCtrl.pop();
+    }
   }
 
 }
