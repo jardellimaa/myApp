@@ -20,6 +20,8 @@ import { ConfiguracoesPageModule } from '../pages/configuracoes/configuracoes.mo
 import { SobrePageModule } from '../pages/sobre/sobre.module';
 import { PerfilPageModule } from '../pages/perfil/perfil.module';
 import { ProdutoDetalhesPageModule } from '../pages/produto-detalhes/produto-detalhes.module';
+import { CadastroProdutosPageModule } from '../pages/cadastro-produtos/cadastro-produtos.module';
+import { EditarProdutoPageModule } from '../pages/editar-produto/editar-produto.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { ProdutoDetalhesPageModule } from '../pages/produto-detalhes/produto-det
     ConfiguracoesPageModule,
     SobrePageModule,
     PerfilPageModule,
-    ProdutoDetalhesPageModule
+    ProdutoDetalhesPageModule,
+    CadastroProdutosPageModule,
+    EditarProdutoPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

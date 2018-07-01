@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { ProdutosProvider } from '../../providers/produtos/produtos';
+import { EditarProdutoPage } from '../editar-produto/editar-produto';
 
 /**
  * Generated class for the ProdutoDetalhesPage page.
@@ -17,7 +19,25 @@ export class ProdutoDetalhesPage {
 
   public produto;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private produtoProvider: ProdutosProvider,
+    private toast: ToastController) {
+  }
+
+  abrirEdicao(){
+    this.navCtrl.push(EditarProdutoPage, { produto: this.produto });
+    console.log(this.produto);
+  }
+
+  removerProduto(){
+    this.produtoProvider.deleteProduto(this.produto.codigo).subscribe(
+      data =>{
+        this.toast.create({message: 'Produto ' +this.produto.nome +' removido com sucesso!', position: 'botton', duration: 3000}).present();
+      }, error => {
+        this.toast.create({message: 'Produto ' +this.produto.nome +' removido com sucesso!', position: 'botton', duration: 3000}).present();
+      })
+    this.navCtrl.pop();
   }
 
   ionViewDidEnter() {

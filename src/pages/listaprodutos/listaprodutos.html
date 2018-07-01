@@ -23,4 +23,14 @@
         {{ produto.nome }}
       </button>
     </ion-list>
+
+    <ion-fab right bottom>
+        <button color="danger" ion-fab="" class="fab fab-ios fab-ios-danger" (click)="abrirCadastro()">
+          <ion-icon class="fab-close-icon icon icon-ios ion-ios-close" name="close" role="img" aria-label="close"></ion-icon>
+          <span class="button-inner">
+            <ion-icon name="add" role="img" class="icon icon-ios ion-ios-add" aria-label="add"></ion-icon>
+          </span>
+          <div class="button-effect"></div>
+        </button>
+      </ion-fab>
 </ion-content>

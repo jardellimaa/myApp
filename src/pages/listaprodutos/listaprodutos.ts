@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { ProdutosProvider } from '../../providers/produtos/produtos';
 import { ProdutoDetalhesPage } from '../produto-detalhes/produto-detalhes';
+import { CadastroProdutosPage } from '../cadastro-produtos/cadastro-produtos';
 
 /**
  * Generated class for the ListaprodutosPage page.
@@ -27,6 +28,10 @@ export class ListaprodutosPage {
     public navParams: NavParams,
     private produtosProvider: ProdutosProvider,
     public loadingCtrl: LoadingController) {
+  }
+
+  abrirCadastro(){
+    this.navCtrl.push(CadastroProdutosPage);
   }
 
   abrirDetalhes(produto){
@@ -56,12 +61,12 @@ export class ListaprodutosPage {
   }
 
   carregarProdutos(){
-    this.abreCarregando();
+    //this.abreCarregando();
     this.produtosProvider.getProdutos().subscribe(
       data=>{
         //console.log(data);
         this.lista_produtos = data as any;
-        this.fechaCarregando();
+        //this.fechaCarregando();
         if(this.isRefreshing){
           this.refresher.complete();
           this.isRefreshing = false;
@@ -69,7 +74,7 @@ export class ListaprodutosPage {
       },
       error=>{
         //console.log(error);
-        this.fechaCarregando();
+        //this.fechaCarregando();
         if(this.isRefreshing){
           this.refresher.complete();
           this.isRefreshing = false;

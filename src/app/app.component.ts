@@ -14,7 +14,7 @@ import { TabsPage } from '../pages/tabs/tabs';
   ]
 })
 export class MyApp {
-  rootPage:any;
+  rootPage:any = IntroPage;
 
   constructor(
     platform: Platform,
@@ -27,13 +27,13 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
 
       let config = configProvider.getConfigData();
-      if (config == null){
+      /*if (config == null){
         this.rootPage = IntroPage;
         configProvider.setConfigData(false);
       } else {
         this.rootPage = TabsPage;
       }
-      console.log(config);
+      console.log(config);*/
 
       statusBar.styleDefault();
       splashScreen.hide();

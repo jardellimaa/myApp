@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ProdutosProvider {
 
-  url = "http://localhost:8080/produtos";
+  url = "http://192.168.31.180:8080/produtos/";
 
   constructor(public http: HttpClient) {
     console.log('Hello ProdutosProvider Provider');
@@ -20,7 +20,19 @@ export class ProdutosProvider {
     return this.http.get(this.url);
   }
 
-  getProduto(){
-    return this.http.get(this.url +"/1");
+  getProduto(codigo: any){
+    return this.http.get(this.url + codigo);
+  }
+
+  saveProduto(produto: any){
+    return this.http.post(this.url, produto);
+  }
+
+  updateProduto(produto: any){
+    return this.http.put(this.url, produto);
+  }
+
+  deleteProduto(codigo: any){
+    return this.http.delete(this.url + codigo);
   }
 }

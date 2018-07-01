@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Cadastrar Produto</ion-title>
+    <ion-buttons end>
+      <button ion-button color="secondary" round (click)="salvarProduto()">OK</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h1 style="text-align: center;">Insira os dados</h1>
+
+  <ion-list>
+      <ion-item>
+          <ion-input type="text" name="codigo" placeholder="Código" [(ngModel)]="model.codigo"></ion-input>
+        </ion-item>
+
+    <ion-item>
+      <ion-input type="text" name="nome" placeholder="Nome" [(ngModel)]="model.nome"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-input type="text" name="codigoBarras" placeholder="Código de Barras" [(ngModel)]="model.codigoBarras"></ion-input>
+      </ion-item>
+  </ion-list>
+
+</ion-content>
