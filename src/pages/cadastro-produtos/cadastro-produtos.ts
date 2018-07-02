@@ -27,7 +27,6 @@ export class CadastroProdutosPage {
     });*/
 
     this.model = new Produto();
-    this.model.codigo = "";
     this.model.nome = "";
     this.model.codigoBarras = "";
   }
@@ -53,7 +52,6 @@ export class CadastroProdutosPage {
 }
 
 export class Produto {
-  codigo: any;
   nome: string;
   codigoBarras: string;
 }

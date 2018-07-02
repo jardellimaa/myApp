@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 import { ProdutosProvider } from '../../providers/produtos/produtos';
 import { EditarProdutoPage } from '../editar-produto/editar-produto';
 
@@ -22,6 +22,7 @@ export class ProdutoDetalhesPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private produtoProvider: ProdutosProvider,
+    private alertCtrl: AlertController,
     private toast: ToastController) {
   }
 
@@ -33,6 +34,30 @@ export class ProdutoDetalhesPage {
 
       }
     )
+  }
+
+  excluir() {
+    let alert = this.alertCtrl.create({
+      title: 'Excluir ' +this.produto.nome,
+      message: 'Deseja mesmo excluir o produto?',
+      buttons: [
+        {
+          text: 'Não',
+          role: 'cancel',
+          handler: () => {
+            console.log('Não excluído');
+          }
+        },
+        {
+          text: 'Sim',
+          handler: () => {
+            console.log('Excluído');
+            this.removerProduto();
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   abrirEdicao(){

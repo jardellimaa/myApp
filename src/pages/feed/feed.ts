@@ -19,8 +19,8 @@ export class FeedPage {
      nome:"Jardel Lima",
      data:"Junho 9, 2018",
      descricao:"Sou Pika!",
-     qntd_likes: 999,
-     qntd_coments: 200,
+     qntd_likes: 10,
+     qntd_coments: 10,
      time_coment: "1h ago"
   }
 
@@ -31,12 +31,21 @@ export class FeedPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    //private alertCtrl: AlertController,
     //private produtosProvider: ProdutosProvider
     ) {
   }
 
   public somaDoisNumeros(num1:number, num2:number):void {
     alert(num1 + num2);
+  }
+
+  curtir(){
+    this.objeto_feed.qntd_likes++;
+  }
+
+  comentar(){
+    this.objeto_feed.qntd_coments++;
   }
 
   ionViewDidLoad() {

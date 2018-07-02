@@ -21,8 +21,8 @@
           <h3 style="font-size: 0.95em;">Código de Barras: {{produto.codigoBarras}}</h3>
           <h3 style="font-size: 0.95em;">Atualizado em: {{ produto.tempo | date:'dd/MM/yyyy' }} às {{ produto.tempo | date:'HH:mm:ss' }}</h3>
           <div style="text-align: right;">
-            <button ion-button clear (click)="abrirEdicao()"><h2>Editar >></h2></button><br>
-            <button ion-button color="danger" clear (click)="removerProduto()"><h2>Excluir >></h2></button>
+            <button ion-button color="primary" clear (click)="abrirEdicao()"><h2 style="color: #488aff">Editar >></h2></button><br>
+            <button ion-button color="danger" clear (click)="excluir()"><h2 style="color: #f53d3d">Excluir >></h2></button>
           </div>
           </ion-item>
     

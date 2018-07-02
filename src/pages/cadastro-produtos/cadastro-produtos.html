@@ -16,13 +16,6 @@
   <form #form="ngForm" novalidate>
     <ion-list>
       <ion-item>
-        <ion-input type="number" name="codigo" placeholder="Código" [(ngModel)]="model.codigo" #codigo="ngModel" min="1" required></ion-input>
-      </ion-item>
-      <ion-item *ngIf="codigo.errors && (codigo.dirty || codigo.touched)" class="text-danger">
-        O campo é obrigatório
-      </ion-item>
-
-      <ion-item>
         <ion-input type="text" name="nome" placeholder="Nome" [(ngModel)]="model.nome" #nome="ngModel" required></ion-input>
       </ion-item>
       <ion-item *ngIf="nome.errors && (nome.dirty || nome.touched)" class="text-danger">
