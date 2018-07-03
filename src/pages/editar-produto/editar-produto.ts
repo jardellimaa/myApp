@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 import { ProdutosProvider } from '../../providers/produtos/produtos';
 import { NgForm } from '@angular/forms';
 
@@ -17,12 +17,13 @@ import { NgForm } from '@angular/forms';
 })
 export class EditarProdutoPage {
 
-  produto: Produto;
+  private produto: Produto;
   @ViewChild('form') form: NgForm;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private produtosProvider: ProdutosProvider,
+    private alertCtrl: AlertController,
     private toast: ToastController) {
     this.produto = new Produto();
     this.produto = this.navParams.get("produto");
@@ -49,6 +50,20 @@ export class EditarProdutoPage {
         }
       )
       this.navCtrl.pop();
+    } else {
+      let alert = this.alertCtrl.create({
+        title: 'Insira os dados',
+        buttons: [
+          {
+            text: 'Ok',
+            role: 'cancel',
+            handler: () => {
+              console.log('Insira os dados');
+            }
+          }
+        ]
+      });
+      alert.present();
     }
   }
 

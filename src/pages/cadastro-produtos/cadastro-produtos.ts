@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 import { ProdutosProvider } from '../../providers/produtos/produtos';
-import { FormBuilder, Validators, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 
 @IonicPage()
 @Component({
@@ -10,15 +10,15 @@ import { FormBuilder, Validators, NgForm } from '@angular/forms';
 })
 export class CadastroProdutosPage {
 
-  model: Produto;
-  cadastroForm: any;
+  private model: Produto;
   @ViewChild('form') form: NgForm;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private produtosProvider: ProdutosProvider,
     private toast: ToastController,
-    private formBuilder: FormBuilder
+    private alertCtrl: AlertController,
+    //private formBuilder: FormBuilder
   ) {
     /*this.cadastroForm = formBuilder.group({
       codigo: [Validators.compose([Validators.required, Validators.min(1)])],
@@ -46,6 +46,20 @@ export class CadastroProdutosPage {
         }
       )
       this.navCtrl.pop();
+    } else {
+      let alert = this.alertCtrl.create({
+        title: 'Insira os dados',
+        buttons: [
+          {
+            text: 'Ok',
+            role: 'cancel',
+            handler: () => {
+              console.log('Insira os dados');
+            }
+          }
+        ]
+      });
+      alert.present();
     }
   }
 

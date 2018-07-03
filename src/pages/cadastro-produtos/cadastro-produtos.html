@@ -19,7 +19,7 @@
         <ion-input type="text" name="nome" placeholder="Nome" [(ngModel)]="model.nome" #nome="ngModel" required></ion-input>
       </ion-item>
       <ion-item *ngIf="nome.errors && (nome.dirty || nome.touched)" class="text-danger">
-        O campo é obrigatório
+        <div style="color: red; font-weight: bolder">O campo é obrigatório</div>
       </ion-item>
 
       <ion-item>
@@ -27,7 +27,7 @@
           minlength="9" maxlength="9" required></ion-input>
       </ion-item>
       <ion-item *ngIf="codigoBarras.errors && (codigoBarras.dirty || codigoBarras.touched)" class="text-danger">
-        O campo é obrigatório
+        <div style="color: red; font-weight: bolder">O campo é obrigatório</div>
       </ion-item>
     </ion-list>
   </form>

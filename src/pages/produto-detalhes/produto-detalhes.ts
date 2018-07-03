@@ -17,7 +17,7 @@ import { EditarProdutoPage } from '../editar-produto/editar-produto';
 })
 export class ProdutoDetalhesPage {
 
-  public produto;
+  private produto: any;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
