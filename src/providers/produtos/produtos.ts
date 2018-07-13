@@ -28,8 +28,8 @@ export class ProdutosProvider {
     return this.http.post(this.url, produto);
   }
 
-  updateProduto(produto: any){
-    return this.http.put(this.url, produto);
+  updateProduto(codigo: any, produto: any){
+    return this.http.put(this.url + codigo, produto);
   }
 
   deleteProduto(codigo: any){

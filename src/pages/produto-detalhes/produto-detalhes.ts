@@ -24,6 +24,8 @@ export class ProdutoDetalhesPage {
     private produtoProvider: ProdutosProvider,
     private alertCtrl: AlertController,
     private toast: ToastController) {
+      this.produto = this.navParams.get("produto");
+      this.carregardoBanco();
   }
 
   carregardoBanco(){

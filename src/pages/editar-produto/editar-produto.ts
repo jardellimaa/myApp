@@ -25,6 +25,10 @@ export class EditarProdutoPage {
     private produtosProvider: ProdutosProvider,
     private alertCtrl: AlertController,
     private toast: ToastController) {
+    this.carregarProduto();
+  }
+
+  private carregarProduto() {
     this.produto = new Produto();
     this.produto = this.navParams.get("produto");
     console.log(this.produto);
@@ -42,14 +46,15 @@ export class EditarProdutoPage {
   editarProduto() {
     if (this.form.form.valid) {
       console.log(this.produto);
-      this.produtosProvider.updateProduto(this.produto).subscribe(
+      this.produtosProvider.updateProduto(this.produto.codigo, this.produto).subscribe(
         data => {
+          this.navCtrl.pop();
           this.toast.create({ message: 'Produto ' + this.produto.nome + ' editado com sucesso!', position: 'botton', duration: 3000 }).present();
         }, error => {
+          this.navCtrl.pop();
           this.toast.create({ message: 'Produto ' + this.produto.nome + ' não foi editado!', position: 'botton', duration: 3000 }).present();
         }
       )
-      this.navCtrl.pop();
     } else {
       let alert = this.alertCtrl.create({
         title: 'Insira os dados',
